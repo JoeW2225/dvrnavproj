@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import Message from "./Message"
 
 export default function Messages() {
 const [messages, setMessages] = useState([])
@@ -15,8 +16,9 @@ const [messages, setMessages] = useState([])
 
     return (
         <div>
-            {messages.map((message => ))}
+            {messages.map(message => (
+                <Message key={message.id} {...message}/> 
+            ))}
         </div>
     )
-
 }
