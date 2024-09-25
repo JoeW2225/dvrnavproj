@@ -30,6 +30,10 @@ app.get("/comments", async function (req,res) {
 app.post("/comments", async function (req,res) {
     const name = req.body.name;
     const message = req.body.message;
+    if (!name || !message) {
+        res.status(400).json({err: "please don't"}) //cannot be left blank
+        return 
+    }
 
     const newName = await db.query (
         "INSERT INTO guestbook (name, message) VALUES ($1, $2)",
