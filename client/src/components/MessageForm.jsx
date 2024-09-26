@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function MessageForm() {
+export function MessageForm({ addMessage }) {
   const [formValues, setFormValues] = useState({
     name: "",
     message: "",
@@ -15,7 +15,8 @@ export function MessageForm() {
       },
       body: JSON.stringify(formValues),
     });
-    const messages = await res.json();
+    const messages = await res.json(mes);
+    addMessage(formValues);
   }
 
   function handleInputChange(event) {
