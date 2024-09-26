@@ -1,0 +1,16 @@
+/* Gradient background */
+body {
+  margin: 0;
+  overflow: hidden;
+  background: linear-gradient(
+    to bottom,
+    #cc3838,
+    #049735,
+    #127e36,
+    #0f4621,
+    #05b6ec,
+    #05627e,
+    #44270d
+  );
+  background-size: 400% 400%;
+}
