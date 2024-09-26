@@ -3,14 +3,19 @@ import { useState } from 'react';
 export function MessageForm() {
     const [formValues, setFormValues] = useState ({
         name: "",
-        favouriteColour: "",
-        favouriteAnimal: "",
+        message: "",
     }) //inital values
 
 
     function handleSubmit(event) {
         event.preventDefault();
-        console.log("The form values are", formValues)
+        async function fetchMessages() {
+            const res = await fetch(`http://localhost:8080/comments`)
+            const messages = await res.json() 
+            
+        }
+
+        
     }
 
     function handleInputChange(event) {
@@ -28,27 +33,17 @@ export function MessageForm() {
                 value={formValues.name}
                 onChange={handleInputChange}
             />
-            <label htmlFor='favouriteColour'>Favourite Colour</label>
+            <label htmlFor='message'>Message</label>
             <input
                 type='text'
-                id='favouriteColour'
-                name='favouriteColour'
-                placeholder='Enter you colour'
-                value={formValues.favouriteColour}
-                onChange={handleInputChange}
-            />
-            <label htmlFor='favouriteAnimal'>Favourite Animal</label>
-            <input
-                type='text'
-                id='favouriteAnimal'
-                name='favouriteAnimal'
-                placeholder='Enter Animal name'
-                value={formValues.favouriteAnimal}
+                id='message'
+                name='message'
+                placeholder='Enter message'
+                value={formValues.message}
                 onChange={handleInputChange}
             />
             <p>Current value is: {formValues.name}</p>
-            <p>Current value is: {formValues.favouriteColour}</p>
-            <p>Current value is: {formValues.favouriteAnimal}</p>
+            <p>Current value is: {formValues.message}</p>
             <button type='submit'>Submit</button>
         </form>
     )
